@@ -16,6 +16,8 @@ Template.loggedin.helpers({
   }
 });
 
+
+
 Template.field.helpers({
   find_user_name: function (user_id) {
     var userName = Meteor.users.findOne({_id : user_id}, { fields: { services: 1 } });
@@ -27,9 +29,18 @@ Template.field.helpers({
   }
 });
 
+
+
 Template.user.helpers({
   user_fields: function (user_id) {
-    var test = Fields.find({userId : user_id});
-    return test;
+    return Fields.find({userId : user_id});
+  }
+});
+
+
+
+Template.user_field.helpers({
+  isUsersField: function (userId) {
+    return Meteor.userId() === userId;
   }
 })

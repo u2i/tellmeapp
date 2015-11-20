@@ -1,6 +1,11 @@
 <template name="user_field">
   <tr>
-    <td> <strong>{{field_name}}</strong> </td>
-    <td> {{field_value}} </td>
+    <td class="right-align"><strong>{{field_name}}: </strong></td>
+    <td>{{field_value}}</td>
+      {{#if isUsersField userId}}
+        <td class="right-align">
+          <a class="waves-effect waves-light btn-flat remove-info right"><i class="material-icons">delete</i></a>
+        </td>
+      {{/if}}
   </tr>
 </template>

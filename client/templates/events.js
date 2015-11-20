@@ -27,6 +27,12 @@ Template.loggedin.events({
   }
 });
 
+Template.user_field.events({
+    "click .remove-info": function () {
+      Fields.remove(this._id);
+    }
+});
+
 Template.body.events({
   'click #logout': function (event) {
     Meteor.logout();
