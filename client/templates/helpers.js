@@ -26,3 +26,10 @@ Template.field.helpers({
     return userName.services.google.picture;
   }
 });
+
+Template.user.helpers({
+  user_fields: function (user_id) {
+    var test = Fields.find({userId : user_id});
+    return test;
+  }
+})

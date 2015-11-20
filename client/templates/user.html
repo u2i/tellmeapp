@@ -1,6 +1,24 @@
 <template name="user">
-  <tr>
-    <td><img height="100" src="{{services.google.picture}}" class="circle"></td>
-    <td> {{services.google.name}} </td>
-  </tr>
+  <div class="row">
+    <div class="col s12 m12 l10 offset-l1">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="{{services.google.picture}}">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{services.google.name}}<i class="material-icons right">more_vert</i></span>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{services.google.name}}<i class="material-icons right">close</i></span>
+          <table class="striped">
+            <tbody>
+              {{#each user_fields _id}}
+                {{> user_field}}
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>    
+    </div>
+  </div>
 </template>
