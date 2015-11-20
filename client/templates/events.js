@@ -24,13 +24,16 @@ Template.loggedin.events({
     // Clear form
     event.target.field_name.value = "";
     event.target.field_value.value = "";
+  },
+  'keyup #search': function(event){
+    Session.set("searchString", event.target.value);
   }
 });
 
 Template.user_field.events({
-    "click .remove-info": function () {
-      Fields.remove(this._id);
-    }
+  "click .remove-info": function () {
+    Fields.remove(this._id);
+  }
 });
 
 Template.body.events({
@@ -40,7 +43,8 @@ Template.body.events({
   },
   'click #add-field-btn': function (event) {
     // Meteor.logout();
-    jQuery('#add-new-field').toggle();
+    jQuery('#add-new-field').slideToggle();
+    jQuery('html, body').scrollTop(0);
     event.preventDefault();
   }
 });

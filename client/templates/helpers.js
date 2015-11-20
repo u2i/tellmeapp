@@ -1,7 +1,6 @@
 Meteor.subscribe("fields");
 Meteor.subscribe("directory");
 
-
 Template.loggedout.helpers({
 
 });
@@ -13,6 +12,14 @@ Template.loggedin.helpers({
   },
   users: function () {
     return Meteor.users.find({});
+  },
+  search: function () {
+    if(Session.get("searchString")) {
+      return Fields.find({'$or' : [ 
+        { 'field_name':{'$regex':Session.get("searchString"), $options: 'i'} },
+        { 'field_value':{'$regex':Session.get("searchString"), $options: 'i'} }
+      ]});
+    }
   }
 });
 
@@ -33,7 +40,7 @@ Template.field.helpers({
 
 Template.user.helpers({
   user_fields: function (user_id) {
-    return Fields.find({userId : user_id});
+    return Fields.find({userId : user_id}, { sort: { field_name: 1 } } );
   }
 });
 
