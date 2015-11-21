@@ -13,11 +13,20 @@ Template.loggedin.helpers({
   users: function () {
     return Meteor.users.find({});
   },
-  search: function () {
+  search_field: function () {
     if(Session.get("searchString")) {
       return Fields.find({'$or' : [ 
+        // { 'userId.services.google.name':{'$regex':Session.get("searchString"), $options: 'si'} },
         { 'field_name':{'$regex':Session.get("searchString"), $options: 'i'} },
         { 'field_value':{'$regex':Session.get("searchString"), $options: 'i'} }
+      ]});
+    }
+  },
+  search_user: function () {
+    if(Session.get("searchString")) {
+      return Meteor.users.find({'$or' : [ 
+        // { 'userId.services.google.name':{'$regex':Session.get("searchString"), $options: 'si'} },
+        { 'profile.name':{'$regex':Session.get("searchString"), $options: 'i'} },
       ]});
     }
   }
@@ -40,6 +49,7 @@ Template.field.helpers({
 
 Template.user.helpers({
   user_fields: function (user_id) {
+    console.log(user_id);
     return Fields.find({userId : user_id}, { sort: { field_name: 1 } } );
   }
 });
