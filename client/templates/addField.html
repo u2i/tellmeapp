@@ -4,7 +4,12 @@
       <h5 class="center">Add info</h5>
 
       <form class="new-field center">
-        <input type="text" name="field_name" class="validate" placeholder="Info type">
+        <input type="text" list="current_fields" name="field_name" class="validate" placeholder="Info type">
+        <datalist id="current_fields">
+          {{#each current_fields}}
+            {{> list}}
+          {{/each}}
+        </datalist>
         <input type="text" name="field_value" class="validate" placeholder="Info value">
         <input type="submit" name="submit" class="btn-flat right" value="Submit">
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat right">Cancel</a>

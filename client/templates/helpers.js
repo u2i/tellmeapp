@@ -72,7 +72,11 @@ Template.field.helpers({
   }
 });
 
-
+Template.addField.helpers({
+  current_fields: function () {
+    return _.uniq(Fields.find({}, { sort: {field_name: 1}, fields: {field_name: 1} }).fetch().map(function(x) { return x.field_name; }), true);
+  }
+})
 
 Template.user.helpers({
   user_fields: function (user_id) {
