@@ -1,10 +1,12 @@
 Fields = new Mongo.Collection("fields");
+
+
 Meteor.methods({
   addField: function (f_name, f_value) {
 
     // Insert a task into the collection
     Fields.insert({
-      userId: Meteor.userId(),
+      userId: Meteor.user(),
       field_name: f_name,
       field_value: f_value,
       createdAt: new Date() // current time
@@ -15,3 +17,5 @@ Meteor.methods({
     Fields.remove(field_id);
   }
 });
+
+

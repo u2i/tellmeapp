@@ -1,8 +1,10 @@
 <template name="field">
-  <tr>
+  <tr class="{{#if hide_me userId.profile.name field_name field_value}} hide {{else}} dupa {{/if}}">
     <!-- <td><img height="50" src="{{find_user_image(userId)}}" class="circle"></td> -->
-    <td> {{find_user_name(userId)}} </td>
+    <!-- <td> {{find_user_name(userId)}} </td> -->
+    <td> {{userId.profile.name}} </td>    
     <td> {{field_name}} </td>
     <td> {{field_value}} </td>
+    
   </tr>
 </template>

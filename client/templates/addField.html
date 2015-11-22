@@ -1,11 +1,18 @@
 <template name="addField">
+  <div id="add-new-modal" class="modal">
+    <div class="modal-content">
+      <h5 class="center">Add info</h5>
 
-  <div id="add-new-field" class="card-panel" style="display:none;">
-    <h5 class="center">Add info</h5>
-    <form class="new-field center">
-      <input type="text" name="field_name" placeholder="Info type">
-      <input type="text" name="field_value" placeholder="Info value">
-      <input type="submit" name="submit" value="Submit">
-    </form>
+      <form class="new-field center">
+        <input type="text" name="field_name" placeholder="Info type">
+        <input type="text" name="field_value" placeholder="Info value">
+        <input type="submit" name="submit" class="btn-flat right" value="Submit">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat right">Cancel</a>
+      </form>
+    </div>
+    <div class="modal-footer">
+      
+    </div>
   </div>
+  
 </template>

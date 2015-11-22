@@ -1,13 +1,7 @@
 <template name="user">
-  <div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="{{services.google.picture}}">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">{{services.google.name}}<i class="material-icons right">more_vert</i></span>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">{{services.google.name}}<i class="material-icons right">close</i></span>
+  <li>
+    <div class="collapsible-header">{{services.google.name}}</div>
+    <div class="collapsible-body">
       <table class="striped">
         <tbody>
           {{#each user_fields _id}}
@@ -16,5 +10,5 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </li>
 </template>

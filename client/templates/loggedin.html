@@ -8,13 +8,14 @@
       {{/each}}
     </tbody>
   </table>
-  <h3 class="center">Users</h3>
-<!--   <table class="bordered">
-    <tbody> -->
+  {{#if search_user}}
+    <h3 class="center">Users</h3>
+    <ul class="collapsible popout" data-collapsible="accordion">
       {{#each search_user}}
         {{> user}}
       {{/each}}
-<!--     </tbody>
-  </table> -->
-
+    </ul>
+  {{else}}
+    {{> me}}
+  {{/if}}
 </template>

@@ -4,6 +4,9 @@ Template.loggedout.events({
   }
 });
 
+Session.set("searchString", "");
+Session.set("searchStringArray", "");
+
 Template.loggedin.events({
   "submit .new-field": function (event) {
     // Prevent default browser form submit
@@ -21,6 +24,7 @@ Template.loggedin.events({
   },
   'keyup #search': function(event){
     Session.set("searchString", event.target.value);
+
   }
 });
 
@@ -35,10 +39,14 @@ Template.body.events({
     Meteor.logout();
     event.preventDefault();
   },
-  'click #add-field-btn': function (event) {
-    // Meteor.logout();
-    jQuery('#add-new-field').slideToggle();
-    jQuery('html, body').scrollTop(0);
+  'click .add-field-btn': function (event) {
+    $('#add-new-modal').openModal();
     event.preventDefault();
   }
 });
+
+Template.user.onRendered(function(){
+  $('.collapsible').collapsible({
+    accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+  });
+})
