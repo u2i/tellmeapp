@@ -11,16 +11,24 @@ Template.loggedin.events({
   "submit .new-field": function (event) {
     // Prevent default browser form submit
     event.preventDefault();
-
-    // Get value from form element
     var f_name = event.target.field_name.value;
     var f_value = event.target.field_value.value;
 
-    Meteor.call("addField", f_name, f_value)
+    // Get value from form element
+    if(f_name == "" || f_value == ""){
+      event.target.field_name.setAttribute("class", "invalid");
+      event.target.field_value.setAttribute("class", "invalid");
+      return false;
+    } else {
+      
+      Meteor.call("addField", f_name, f_value);
 
-    // Clear form
-    event.target.field_name.value = "";
-    event.target.field_value.value = "";
+      // Clear form
+      event.target.field_name.value = "";
+      event.target.field_value.value = "";
+      event.target.field_name.removeAttribute("class");
+      event.target.field_value.removeAttribute("class");
+    }
   },
   'keyup #search': function(event){
     Session.set("searchString", event.target.value);
